@@ -2,8 +2,8 @@ const imageContainer = document.querySelector(".image-container");
 const loader = document.querySelector("loader");
 
 let photosArray = [];
-const count = 2;
-const apiKey = "PmztUZ7B4oUIoPZsH3H1E1wjuMVp_SfKiakB2IIsKs8";
+const count = 3;
+const apiKey = UNSPLASH_APIK_KEY;
 const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
 
 //create elements for links and photyos, add to dom
@@ -49,4 +49,14 @@ async function getPhotos() {
     console.log(err);
   }
 }
+
+// check to see if scrolling near bottom of page, load more photos
+window.addEventListener("scroll", () => {
+  if (
+    window.innerHeight + window.scrollY >=
+    document.body.offsetHeight - 1000
+  ) {
+    getPhotos();
+  }
+});
 getPhotos();
