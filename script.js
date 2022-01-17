@@ -1,10 +1,10 @@
 const imageContainer = document.querySelector(".image-container");
 const loader = document.querySelector("#loader");
 let ready = false;
-let imagesLoaded = 0;
 let totalImages = 0;
 let photosArray = [];
-const count = 30;
+let count = 5;
+let initialLoad = true;
 const apiKey = config.UNSPLASH_API_KEY;
 const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
 
@@ -14,6 +14,7 @@ function imageLoaded() {
   if (imagesLoaded === totalImages) {
     ready = true;
     loader.hidden = true;
+    count = 30;
     // console.log("ready = ", ready);
   }
 }
